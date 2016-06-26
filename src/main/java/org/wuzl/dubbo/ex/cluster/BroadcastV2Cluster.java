@@ -12,6 +12,7 @@ import com.alibaba.dubbo.rpc.cluster.Directory;
  * 
  */
 public class BroadcastV2Cluster implements Cluster {
+	public final static String NAME = "broadcastV2";
 
 	public <T> Invoker<T> join(Directory<T> directory) throws RpcException {
 		return new BroadcastV2ClusterInvoker<T>(directory);
