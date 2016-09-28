@@ -33,12 +33,23 @@ public class LocalServerUtil {
 		return serverSet.contains(address);
 	}
 
+	public static String getDubboServerUrl() {
+		DubboProtocol dubboProtocol = DubboProtocol.getDubboProtocol();
+		Collection<ExchangeServer> servers = dubboProtocol.getServers();
+
+		for (ExchangeServer server : servers) {
+			return getServerString(server.getUrl());
+		}
+		return null;
+	}
+
 	@SuppressWarnings("unchecked")
 	public static <T> Invoker<T> getLocalInvover(URL url) {
 		DubboProtocol dubboProtocol = DubboProtocol.getDubboProtocol();
-		Collection<Exporter<?>> exporters=dubboProtocol.getExporters();
-		for(Exporter<?> exporter:exporters){
-			if(exporter.getInvoker().getInterface().getName().equals(url.getPath())){
+		Collection<Exporter<?>> exporters = dubboProtocol.getExporters();
+		for (Exporter<?> exporter : exporters) {
+			if (exporter.getInvoker().getInterface().getName()
+					.equals(url.getPath())) {
 				return (Invoker<T>) exporter.getInvoker();
 			}
 		}

@@ -1,1 +1,2 @@
 broadcastV2=org.wuzl.dubbo.ex.cluster.BroadcastV2Cluster
+broadcastAndMerge=org.wuzl.dubbo.ex.cluster.BroadcastAndMergeCluster

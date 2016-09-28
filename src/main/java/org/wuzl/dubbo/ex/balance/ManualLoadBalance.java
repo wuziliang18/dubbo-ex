@@ -24,7 +24,8 @@ public class ManualLoadBalance extends AbstractLoadBalance {
 			throw new RpcException(String.format("找不到接口【%s】的服务调用规则",
 					serviceName));
 		}
-		String serverName = rule.getServerUrl(invocation.getArguments());
+		String serverName = rule.getServerUrl(invocation.getMethodName(),
+				invocation.getArguments());
 		if (serverName == null || serverName.equals("")) {
 			throw new RpcException(String.format(
 					"接口【%s】的服务调用规则有误，必须返回要调用的服务名称", serviceName));

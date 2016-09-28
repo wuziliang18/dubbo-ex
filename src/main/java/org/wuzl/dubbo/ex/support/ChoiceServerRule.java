@@ -9,9 +9,9 @@ package org.wuzl.dubbo.ex.support;
 public interface ChoiceServerRule {
 	/**
 	 * 根据参数获取要调用的服务 必须是ip:port 的格式
-	 * 
+	 * @param methodName
 	 * @param params
 	 * @return
 	 */
-	public String getServerUrl(Object[] params);
+	public String getServerUrl(String methodName,Object[] params);
 }
